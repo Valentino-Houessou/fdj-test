@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./app/App.css";
-import { Grid } from "./Grid";
+import { Grid } from "./components/grid/Grid";
 import { fetchPrices } from "./store/prices/pricesSlice";
 import { RootState } from "./store/rootReducer";
 import { Status } from "./types";

@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store/rootReducer";
+import { MAX_NUMBERS_PATTERN } from "../../constants";
+import { RootState } from "../../store/rootReducer";
 import {
-  decrementStars,
-  incrementStars,
-} from "../store/selectedPattern/selectedPatternSlice";
-import { StarButton } from "./StarButton";
-import "./stars.css";
-import { disableButton } from "../utils";
-import { MAX_NUMBERS_STARS_PATTERN } from "../constants";
+  decrementNumbers,
+  incrementNumbers
+} from "../../store/selectedPattern/selectedPatternSlice";
+import { disableButton } from "../../utils";
+import { NumberButton } from "./NumberButton";
+import "./numbers.css";
 
-interface StarsProps {
+interface NumbersProps {
   numbers: number[];
 }
-export const Stars: React.FC<StarsProps> = ({ numbers }) => {
+
+export const Numbers: React.FC<NumbersProps> = ({ numbers }) => {
   const dispatch = useDispatch();
   const { selectedPattern } = useSelector(
     (state: RootState) => state.selectedPattern
@@ -21,21 +22,20 @@ export const Stars: React.FC<StarsProps> = ({ numbers }) => {
   const [toDisable, setToDisable] = useState(false);
 
   useEffect(() => {
-    setToDisable(disableButton(selectedPattern, MAX_NUMBERS_STARS_PATTERN));
+    setToDisable(disableButton(selectedPattern, MAX_NUMBERS_PATTERN));
   }, [selectedPattern]);
 
   const onClick = (selected: boolean) => {
     if (!selected) {
-      dispatch(incrementStars());
+      dispatch(incrementNumbers());
     } else {
-      dispatch(decrementStars());
+      dispatch(decrementNumbers());
     }
   };
-
   return (
-    <div className="stars">
+    <div className="numbers">
       {numbers.map((value) => (
-        <StarButton
+        <NumberButton
           value={value}
           key={value}
           onClick={onClick}
