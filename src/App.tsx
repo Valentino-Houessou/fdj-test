@@ -5,6 +5,7 @@ import { Grid } from "./components/grid/Grid";
 import { fetchPrices } from "./store/prices/pricesSlice";
 import { RootState } from "./store/rootReducer";
 import { Status } from "./types";
+import { PriceContainer } from "./components/price/PriceContainer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,12 @@ const App = () => {
     } else if (status === Status.failed) {
       return <p>{error}</p>;
     } else {
-      return <Grid />;
+      return (
+        <div>
+          <PriceContainer prices={prices} />
+          <Grid />
+        </div>
+      );
     }
   };
 

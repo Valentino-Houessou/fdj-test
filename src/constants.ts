@@ -27,3 +27,6 @@ export const MAX_NUMBERS_PATTERN = [
   [6, 7],
   ...MAX_NUMBERS_STARS_PATTERN,
 ] as Pattern[];
+
+export const MIN_NUMBERS = 5;
+export const MIN_STARS = 2;
