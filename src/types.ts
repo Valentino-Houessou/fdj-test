@@ -41,3 +41,7 @@ export interface PricesAPI {
   jackpot: Jackpot;
   multiples: Multiple[];
 }
+
+export interface SelectedPatternState {
+  selectedPattern: Pattern;
+}
