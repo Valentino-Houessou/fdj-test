@@ -43,6 +43,10 @@
     center 0;
 }
 
+.starButton:disabled {
+  cursor: not-allowed;
+}
+
 .starText {
   position: absolute;
   z-index: 1;
@@ -54,4 +58,8 @@
 
 .starButton.selectedStar::after {
   opacity: 1;
+}
+
+.disabledStar {
+  opacity: 0.5;
 }

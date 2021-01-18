@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/rootReducer";
 import {
   decrementStars,
-  incrementStars
+  incrementStars,
 } from "../store/selectedPattern/selectedPatternSlice";
 import { StarButton } from "./StarButton";
 import "./stars.css";
+import { disableButton } from "../utils";
+import { MAX_NUMBERS_STARS_PATTERN } from "../constants";
 
 interface StarsProps {
   numbers: number[];
@@ -16,9 +18,10 @@ export const Stars: React.FC<StarsProps> = ({ numbers }) => {
   const { selectedPattern } = useSelector(
     (state: RootState) => state.selectedPattern
   );
+  const [toDisable, setToDisable] = useState(false);
 
   useEffect(() => {
-    console.log(selectedPattern);
+    setToDisable(disableButton(selectedPattern, MAX_NUMBERS_STARS_PATTERN));
   }, [selectedPattern]);
 
   const onClick = (selected: boolean) => {
@@ -32,7 +35,12 @@ export const Stars: React.FC<StarsProps> = ({ numbers }) => {
   return (
     <div className="stars">
       {numbers.map((value) => (
-        <StarButton value={value} key={value} onClick={onClick} />
+        <StarButton
+          value={value}
+          key={value}
+          onClick={onClick}
+          disable={toDisable}
+        />
       ))}
     </div>
   );

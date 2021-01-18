@@ -1,4 +1,4 @@
-import { Multiple, Price } from "./types";
+import { Multiple, Pattern, Price } from "./types";
 
 export const mapMultipleToPrice = (multiples: Multiple[]) =>
   multiples.map(
@@ -12,3 +12,8 @@ export const mapMultipleToPrice = (multiples: Multiple[]) =>
 export const getNumbers = (value: number) => {
   return Array.from(Array(value), (e, i) => i + 1);
 };
+
+export const disableButton = (selectedPattern: Pattern, patterns: Pattern[]) =>
+  !!patterns.find(
+    (pattern) => JSON.stringify(pattern) === JSON.stringify(selectedPattern)
+  );

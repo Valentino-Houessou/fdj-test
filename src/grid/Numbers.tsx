@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { MAX_NUMBERS_PATTERN } from "../constants";
 import { RootState } from "../store/rootReducer";
 import {
   decrementNumbers,
-  incrementNumbers,
+  incrementNumbers
 } from "../store/selectedPattern/selectedPatternSlice";
+import { disableButton } from "../utils";
 import { NumberButton } from "./NumberButton";
 import "./numbers.css";
 
@@ -17,9 +19,10 @@ export const Numbers: React.FC<NumbersProps> = ({ numbers }) => {
   const { selectedPattern } = useSelector(
     (state: RootState) => state.selectedPattern
   );
+  const [toDisable, setToDisable] = useState(false);
 
   useEffect(() => {
-    console.log(selectedPattern);
+    setToDisable(disableButton(selectedPattern, MAX_NUMBERS_PATTERN));
   }, [selectedPattern]);
 
   const onClick = (selected: boolean) => {
@@ -32,7 +35,12 @@ export const Numbers: React.FC<NumbersProps> = ({ numbers }) => {
   return (
     <div className="numbers">
       {numbers.map((value) => (
-        <NumberButton value={value} key={value} onClick={onClick} />
+        <NumberButton
+          value={value}
+          key={value}
+          onClick={onClick}
+          disable={toDisable}
+        />
       ))}
     </div>
   );
