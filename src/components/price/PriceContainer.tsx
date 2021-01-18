@@ -40,7 +40,10 @@ export const PriceContainer: React.FC<PriceContainerProps> = ({ prices }) => {
                 }`
               : ""
           }`
-        : `${getPrice(selectedPattern, prices)}`}
+        : `${getPrice(
+            selectedPattern,
+            prices
+          )}    Cochez d'autres numéros pour faire un multiple`}
     </div>
   );
 };
