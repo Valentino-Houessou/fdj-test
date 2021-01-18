@@ -1,0 +1,6 @@
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 26em;
+}

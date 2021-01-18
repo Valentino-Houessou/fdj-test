@@ -1,0 +1,6 @@
+.grid {
+  width: 35em;
+  height: 13em;
+  display: flex;
+  justify-content: space-around;
+}

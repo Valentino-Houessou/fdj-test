@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./app/App.css";
+import { Grid } from "./Grid";
 import { fetchPrices } from "./store/prices/pricesSlice";
 import { RootState } from "./store/rootReducer";
 import { Status } from "./types";
@@ -21,7 +22,7 @@ const App = () => {
     } else if (status === Status.failed) {
       return <p>{error}</p>;
     } else {
-      return <p>Here will be the grid of euromillion</p>;
+      return <Grid />;
     }
   };
 

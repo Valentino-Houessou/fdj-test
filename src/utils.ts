@@ -8,3 +8,7 @@ export const mapMultipleToPrice = (multiples: Multiple[]) =>
         pattern: multiple.pattern,
       } as Price)
   );
+
+export const getNumbers = (value: number) => {
+  return Array.from(Array(value), (e, i) => i + 1);
+};
