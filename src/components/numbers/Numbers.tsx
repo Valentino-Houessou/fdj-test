@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { MAX_NUMBERS_PATTERN } from "../../constants";
 import { RootState } from "../../store/rootReducer";
 import {
+  addNumber,
+  removeNumber,
+} from "../../store/selectedElements/selectedElementsSlice";
+import {
   decrementNumbers,
   incrementNumbers,
 } from "../../store/selectedPattern/selectedPatternSlice";
@@ -16,20 +20,26 @@ interface NumbersProps {
 
 export const Numbers: React.FC<NumbersProps> = ({ numbers }) => {
   const dispatch = useDispatch();
-  const { numbers: selectedNumbers, stars } = useSelector(
+  const { numbers: numbersCount, stars } = useSelector(
     (state: RootState) => state.selectedPattern
   );
+  const { selectedNumbers } = useSelector(
+    (state: RootState) => state.selectedElements
+  );
+
   const [toDisable, setToDisable] = useState(false);
 
   useEffect(() => {
-    setToDisable(disableButton([selectedNumbers, stars], MAX_NUMBERS_PATTERN));
-  }, [selectedNumbers, stars]);
+    setToDisable(disableButton([numbersCount, stars], MAX_NUMBERS_PATTERN));
+  }, [numbersCount, stars]);
 
-  const onClick = (selected: boolean) => {
+  const onClick = (selected: boolean, value: number) => {
     if (!selected) {
       dispatch(incrementNumbers());
+      dispatch(addNumber(value));
     } else {
       dispatch(decrementNumbers());
+      dispatch(removeNumber(value));
     }
   };
   return (
@@ -40,6 +50,7 @@ export const Numbers: React.FC<NumbersProps> = ({ numbers }) => {
           key={value}
           onClick={onClick}
           disable={toDisable}
+          selected={selectedNumbers.includes(value)}
         />
       ))}
     </div>

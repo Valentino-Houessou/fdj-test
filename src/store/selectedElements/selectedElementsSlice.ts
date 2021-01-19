@@ -12,10 +12,14 @@ const selectedElementsSlice = createSlice({
       state.selectedStars.push(action.payload);
     },
     removeNumber(state, action) {
-      state.selectedNumbers.filter((number) => number !== action.payload);
+      state.selectedNumbers = state.selectedNumbers.filter(
+        (number) => number !== action.payload
+      );
     },
     removeStar(state, action) {
-      state.selectedStars.filter((star) => star !== action.payload);
+      state.selectedStars = state.selectedStars.filter(
+        (star) => star !== action.payload
+      );
     },
   },
 });

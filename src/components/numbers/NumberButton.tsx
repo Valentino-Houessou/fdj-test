@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./numberButton.css";
 
 interface NumberButtonProps {
   value: number;
-  onClick: (selected: boolean) => void;
+  onClick: (selected: boolean, value: number) => void;
+  selected: boolean;
   disable: boolean;
 }
 
@@ -11,16 +12,16 @@ export const NumberButton: React.FC<NumberButtonProps> = ({
   value,
   onClick,
   disable,
+  selected,
 }) => {
-  const [selected, setSelected] = useState(false);
+  const disabled = !selected && disable;
   return (
     <button
       className={`numberButton ${selected && "selectedNumber"}`}
       onClick={() => {
-        onClick(selected);
-        setSelected(!selected);
+        onClick(selected, value);
       }}
-      disabled={!selected && disable}
+      disabled={disabled}
     >
       {value}
     </button>

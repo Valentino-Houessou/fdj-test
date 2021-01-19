@@ -48,6 +48,6 @@ export interface SelectedPatternState {
 }
 
 export interface SelectedElementsState {
-  selectedNumbers: string[];
-  selectedStars: string[];
+  selectedNumbers: number[];
+  selectedStars: number[];
 }
