@@ -43,5 +43,6 @@ export interface PricesAPI {
 }
 
 export interface SelectedPatternState {
-  selectedPattern: Pattern;
+  numbers: number;
+  stars: number;
 }

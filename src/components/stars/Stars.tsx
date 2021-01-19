@@ -15,14 +15,16 @@ interface StarsProps {
 }
 export const Stars: React.FC<StarsProps> = ({ numbers }) => {
   const dispatch = useDispatch();
-  const { selectedPattern } = useSelector(
+  const { numbers: selectedNumbers, stars } = useSelector(
     (state: RootState) => state.selectedPattern
   );
   const [toDisable, setToDisable] = useState(false);
 
   useEffect(() => {
-    setToDisable(disableButton(selectedPattern, MAX_NUMBERS_STARS_PATTERN));
-  }, [selectedPattern]);
+    setToDisable(
+      disableButton([selectedNumbers, stars], MAX_NUMBERS_STARS_PATTERN)
+    );
+  }, [selectedNumbers, stars]);
 
   const onClick = (selected: boolean) => {
     if (!selected) {

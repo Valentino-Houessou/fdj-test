@@ -4,7 +4,7 @@ import { MAX_NUMBERS_PATTERN } from "../../constants";
 import { RootState } from "../../store/rootReducer";
 import {
   decrementNumbers,
-  incrementNumbers
+  incrementNumbers,
 } from "../../store/selectedPattern/selectedPatternSlice";
 import { disableButton } from "../../utils";
 import { NumberButton } from "./NumberButton";
@@ -16,14 +16,14 @@ interface NumbersProps {
 
 export const Numbers: React.FC<NumbersProps> = ({ numbers }) => {
   const dispatch = useDispatch();
-  const { selectedPattern } = useSelector(
+  const { numbers: selectedNumbers, stars } = useSelector(
     (state: RootState) => state.selectedPattern
   );
   const [toDisable, setToDisable] = useState(false);
 
   useEffect(() => {
-    setToDisable(disableButton(selectedPattern, MAX_NUMBERS_PATTERN));
-  }, [selectedPattern]);
+    setToDisable(disableButton([selectedNumbers, stars], MAX_NUMBERS_PATTERN));
+  }, [selectedNumbers, stars]);
 
   const onClick = (selected: boolean) => {
     if (!selected) {
