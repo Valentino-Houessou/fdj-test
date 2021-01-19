@@ -1,6 +1,6 @@
 import "./grid.css";
-import { Stars } from "../stars/Stars";
-import { Numbers } from "../numbers/Numbers";
+import { Stars } from "../../containers/stars/Stars";
+import { Numbers } from "../../containers/numbers/Numbers";
 import { getNumbers } from "../../utils";
 import { NUMBERS_COUNT, STARS_COUNT } from "../../constants";
 

@@ -5,7 +5,7 @@ import { Grid } from "./components/grid/Grid";
 import { fetchPrices } from "./store/prices/pricesSlice";
 import { RootState } from "./store/rootReducer";
 import { Status } from "./types";
-import { PriceContainer } from "./components/price/PriceContainer";
+import { PriceContainer } from "./containers/price/PriceContainer";
 
 const App = () => {
   const dispatch = useDispatch();

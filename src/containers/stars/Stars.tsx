@@ -11,7 +11,7 @@ import {
   incrementStars,
 } from "../../store/selectedPattern/selectedPatternSlice";
 import { disableButton } from "../../utils";
-import { StarButton } from "./StarButton";
+import { StarButton } from "../../components/starButton/StarButton";
 import "./stars.css";
 
 interface StarsProps {

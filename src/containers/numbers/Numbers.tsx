@@ -11,7 +11,7 @@ import {
   incrementNumbers,
 } from "../../store/selectedPattern/selectedPatternSlice";
 import { disableButton } from "../../utils";
-import { NumberButton } from "./NumberButton";
+import { NumberButton } from "../../components/numberButton/NumberButton";
 import "./numbers.css";
 
 interface NumbersProps {
