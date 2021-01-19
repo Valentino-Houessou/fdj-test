@@ -1,6 +1,12 @@
+@media only screen and (min-width: 915px) {
+  .grid {
+    width: 35em;
+    height: 13em;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
 .grid {
-  width: 35em;
-  height: 13em;
-  display: flex;
-  justify-content: space-around;
+  margin: 0 1em;
 }

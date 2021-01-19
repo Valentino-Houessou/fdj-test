@@ -1,6 +1,12 @@
+@media only screen and (min-width: 914px) {
+  .stars {
+    width: 8em;
+  }
+}
+
 .stars {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 8em;
+  margin-top: 0.125em;
 }
